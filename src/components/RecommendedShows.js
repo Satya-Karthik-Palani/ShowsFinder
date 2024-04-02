@@ -35,7 +35,7 @@ function Recommendation(){
                     </div>
                 </div>
             </div>
-            <div className="ml-36">
+            <div className="ml-10 lg:ml-36">
                 {
                     loading === true ? (<Audio
                         height="80"
