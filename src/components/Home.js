@@ -1,5 +1,6 @@
 import React from 'react'
 import RecommendedShows from './RecommendedShows'
+import UpcomingShows from './UpcomingShows';
 
 function Home() {
   return (
@@ -58,6 +59,7 @@ function Home() {
           </div>
           <RecommendedShows/>
         </div>
+        <UpcomingShows/>
     </div>
   )
 }

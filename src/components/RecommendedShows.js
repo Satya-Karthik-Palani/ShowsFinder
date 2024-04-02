@@ -2,13 +2,12 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from "react";
 import { Audio } from 'react-loader-spinner';
-
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import { FreeMode } from 'swiper/modules';
+
+import moment from 'moment';
 
 function Recommendation(){
 
@@ -21,7 +20,7 @@ function Recommendation(){
         setLoading(true);
         const response = await fetch(recommendedShowsApi);
         const data = await response.json();
-        setRecommendedShows(data);
+        setRecommendedShows(data.events);
         setLoading(false);
     }
     useEffect(()=>{
@@ -35,12 +34,15 @@ function Recommendation(){
                     Recommended shows
                     <FaArrowRightLong />
                 </div>
+                <div>
+                    <p className="underline text-md">See all</p>
+                </div>
             </div>
             <div>
                 <Swiper
                     slidesPerView={4}
                     centeredSlides={true}
-                    spaceBetween={30}
+                    spaceBetween={20}
                     freeMode={true}
                     modules={[FreeMode]}
                     className="mb-4"
@@ -56,28 +58,31 @@ function Recommendation(){
                             wrapperClass
                         />) : 
                         (
-                            recommendedShows.events.map((e)=>{
+                            recommendedShows.map((e)=>{
                                 const urlItems = e.imgUrl.split('/');
                                 const id = urlItems[5];
+                                const weather= e?.weather.split(' ');
                                 return (
-                                    <SwiperSlide key={id} className="relative">
-                                        <img src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`} alt="event img"></img>
-                                        <div className="absolute bottom-3 px-10 pb-4 w-full text-[#989090]">
-                                            <div className="flex justify-between items-center">
-                                                <p className="text-lg text-white">Make Agree</p>
-                                                <p className="text-xs">March 23,2024</p>
-                                            </div>
-                                            <div className="flex justify-between items-center">
+                                    <div className="h-80 w-40">
+                                        <SwiperSlide key={id} className="relative">
+                                            <img src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`} alt="event img"></img>
+                                            <div className="absolute bottom-3 px-10 pb-4 w-full text-[#989090]">
                                                 <div className="flex justify-between items-center">
-                                                    <img src="./Images/location.svg" className="w-4 h-4" alt="location img"></img>
-                                                    <p className="text-xs">&nbsp;West Douglas</p>
+                                                    <p className="text-lg text-white line-clamp-0 w-1/2">{e?.eventName}</p>
+                                                    <p className="text-xs">{moment(e?.date).format('MMMM Do YYYY')}</p>
                                                 </div>
-                                                <div>
-                                                    <p className="text-xs">Snowy, 26°C | 42 Km</p>
+                                                <div className="flex justify-between items-center">
+                                                    <div className="flex justify-between items-center">
+                                                        <img src="./Images/location.svg" className="w-4 h-4" alt="location img"></img>
+                                                        <p className="text-xs">&nbsp;{e?.cityName}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-xs">{weather[0]}&nbsp;{weather[1].replace('C', '\u00B0C')} | 42 Km</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </SwiperSlide>
+                                        </SwiperSlide>
+                                    </div>
                                 );
                             })
                         )
