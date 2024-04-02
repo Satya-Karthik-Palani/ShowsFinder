@@ -3,6 +3,7 @@ import RecommendedShows from './RecommendedShows'
 import UpcomingShows from './UpcomingShows';
 
 function Home() {
+  const list = ['Live shows','Streams','Movies','Plays','Events','Sports','Activities']
   return (
     <div className=''>
         <div className='flex justify-between items-center p-2 m-2 lg:mx-16 lg:justify-start'>
@@ -34,8 +35,8 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className='mx-2 lg:mx-16 flex justify-between items-center mb-2 overflow-hidden'>
-          <div className='hidden lg:flex items-center'>
+        <div className='hidden mx-2 lg:mx-16 lg:flex justify-between items-center mb-2 overflow-hidden'>
+          <div className='flex items-center'>
             <img src='./Images/location.svg' className='h-3 w-3' alt='location svg'></img>
             <h1 className='text-[#989090] text-sm'>&nbsp;Mumbai,India &gt;</h1>
           </div>
@@ -49,15 +50,28 @@ function Home() {
               <p className="cursor-pointer">Activities</p>
           </div>
         </div>
+        <div className='lg:hidden m-4 relative flex items-center'>
+            <ul className='flex items-center justify-start sm:justify-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-x-8'>
+          {
+            list.map((item)=>(
+              <li className='inline-block text-[#989090] text-sm cursor-pointer'>
+                {item}
+              </li>
+            ))
+          }
+          </ul>
+        </div>
         <div className='relative text-center w-full'>
-          <img width='100%' height='50rem' src='./Images/Banner.svg' alt='Banner SVG' className='lg:w-full lg:h-auto'></img>
-          <div className='absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8/12'>
-            <p className='text-white text-2xl lg:text-6xl text-center font-semibold leading-relaxed'>Discover Exciting Events Happening Near You - Stay Tuned for Updates!</p>
-            <p className='text-white lg:text-xl lg:px-[70px]'>
-              Dorem ipsom dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero at velit interdum, ac aliquet adio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            </p>
+          <img src='./Images/Banner.svg' alt='Banner SVG' className='w-full h-auto'></img>
+          <div className='absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8/12'>
+            <div className='text-center text-white'>
+              <p className='text-2xl lg:text-6xl font-semibold leading-relaxed mb-4'>Discover Exciting Events Happening Near You - Stay Tuned for Updates!</p>
+              <p className='lg:text-xl lg:px-[70px] mb-8'>
+                Dorem ipsom dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero at velit interdum, ac aliquet adio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+              </p>
+            </div>
           </div>
-          <RecommendedShows/>
+            <RecommendedShows/>
         </div>
         <UpcomingShows/>
     </div>

@@ -1,11 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from "react";
 import { Audio } from 'react-loader-spinner';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { FreeMode } from 'swiper/modules';
 
 import moment from 'moment';
 
@@ -28,47 +23,42 @@ function Recommendation(){
     }, [])
 
     return(
-        <div className="w-10/12 mx-auto mt-2">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center gap-4 font-semibold">
-                    Recommended shows
-                    <FaArrowRightLong />
-                </div>
-                <div>
-                    <p className="underline text-md">See all</p>
+        <div>
+            <div className="w-10/12 mx-auto mt-2">
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-4 font-semibold">
+                        Recommended shows
+                        <FaArrowRightLong />
+                    </div>
+                    <div>
+                        <p className="underline text-md">See all</p>
+                    </div>
                 </div>
             </div>
-            <div>
-                <Swiper
-                    slidesPerView={4}
-                    centeredSlides={true}
-                    spaceBetween={20}
-                    freeMode={true}
-                    modules={[FreeMode]}
-                    className="mb-4"
-                >
-                    {
-                        loading === true ? (<Audio
-                            height="80"
-                            width="80"
-                            radius="9"
-                            color="#e74008"
-                            ariaLabel="three-dots-loading"
-                            wrapperStyle
-                            wrapperClass
-                        />) : 
-                        (
-                            recommendedShows.map((e)=>{
-                                const urlItems = e.imgUrl.split('/');
-                                const id = urlItems[5];
-                                const weather= e?.weather.split(' ');
-                                return (
-                                    <div className="h-80 w-40">
-                                        <SwiperSlide key={id} className="relative">
-                                            <img src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`} alt="event img"></img>
-                                            <div className="absolute bottom-3 px-10 pb-4 w-full text-[#989090]">
+            <div className="ml-36">
+                {
+                    loading === true ? (<Audio
+                        height="80"
+                        width="80"
+                        radius="9"
+                        color="#e74008"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle
+                        wrapperClass
+                    />) : (
+                        <div className="relative flex items-center">
+                            <div className="flex items-center justify-start w-full h-96 overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide gap-x-0">
+                                {
+                                    recommendedShows.map((e)=>{
+                                        const urlItems = e.imgUrl.split('/');
+                                        const id = urlItems[5];
+                                        const weather= e?.weather.split(' ');
+                                        return(
+                                        <div className="inline-block cursor-pointer relative h-full min-w-[280px]">
+                                            <img src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000`} alt="event img" className="h-full w-full"></img>
+                                            <div className="absolute bottom-3 px-7 pb-4 w-full text-[#989090]">
                                                 <div className="flex justify-between items-center">
-                                                    <p className="text-lg text-white line-clamp-0 w-1/2">{e?.eventName}</p>
+                                                    <p className="text-lg text-white truncate overflow-hidden w-1/2">{e?.eventName}</p>
                                                     <p className="text-xs">{moment(e?.date).format('MMMM Do YYYY')}</p>
                                                 </div>
                                                 <div className="flex justify-between items-center">
@@ -81,13 +71,13 @@ function Recommendation(){
                                                     </div>
                                                 </div>
                                             </div>
-                                        </SwiperSlide>
-                                    </div>
-                                );
-                            })
-                        )
-                    }
-                </Swiper>
+                                        </div>
+                                    )})
+                                }
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
