@@ -8,7 +8,7 @@ function Event({e,id,weather}) {
           <p className='ml-2'>{moment(e?.date).format('MMMM Do YYYY')}</p>
         </div>
         <div className='mx-7 my-2'>
-          <p className='text-lg font-semibold mb-1'>{e.eventName}</p>
+          <p className='text-lg font-semibold mb-1 line-clamp-1'>{e.eventName}</p>
           <div className="flex justify-between items-center text-[#989090]">
               <div className="flex justify-between items-center">
                   <img src="./Images/location.svg" className="w-4 h-4" alt="location img"></img>
