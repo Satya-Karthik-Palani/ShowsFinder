@@ -10,7 +10,7 @@ function Home() {
           <div className='w-1/4'>
             <h1 className='text-red-600 font-bold'>BookUsNow</h1>
             <div className='flex lg:hidden items-center'>
-              <img src='./Images/location.svg' className='h-3 w-3' alt='location svg'></img>
+              <img src='./Images/location.svg' className='h-2 w-2 sm:h-3 sm:w-3' alt='location svg'></img>
               <h1 className='text-[#989090] text-xs'>&nbsp;Mumbai,India &gt;</h1>
             </div>
           </div>
@@ -63,7 +63,7 @@ function Home() {
         </div>
         <div className='relative text-center w-full'>
           <img src='./Images/Banner.svg' alt='Banner SVG' className='w-full h-auto'></img>
-          <div className='absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8/12'>
+          <div className='absolute top-[22%] sm:top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8/12'>
             <div className='text-center text-white'>
               <p className='text-2xl lg:text-6xl font-semibold leading-relaxed mb-4'>Discover Exciting Events Happening Near You - Stay Tuned for Updates!</p>
               <p className='lg:text-xl lg:px-[70px] mb-8'>
