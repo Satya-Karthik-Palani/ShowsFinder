@@ -65,7 +65,7 @@ function Home() {
           <img src='./Images/Banner.svg' alt='Banner SVG' className='w-full h-auto'></img>
           <div className='absolute top-[22%] sm:top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8/12'>
             <div className='text-center text-white'>
-              <p className='text-lg lg:text-6xl font-semibold leading-relaxed mb-4'>Discover Exciting Events Happening Near You - Stay Tuned for Updates!</p>
+              <p className='text-lg lg:text-6xl font-semibold leading-relaxed sm:mb-4'>Discover Exciting Events Happening Near You - Stay Tuned for Updates!</p>
               <p className='lg:text-xl lg:px-[70px] mb-8'>
                 Dorem ipsom dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero at velit interdum, ac aliquet adio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
               </p>
