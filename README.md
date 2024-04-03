@@ -17,3 +17,7 @@ The website effectively fulfills the specified requirements for responsiveness, 
 
 # Mobile Screen Size Screen Shots 
 
+![Nav Bar](https://github.com/Satya-Karthik-Palani/ShowsFinder/assets/122262906/77670256-a816-43f5-bd03-6b2c907ba60a)
+![Recommended Shows](https://github.com/Satya-Karthik-Palani/ShowsFinder/assets/122262906/3c226242-eb4a-4ff4-9f3c-7fadacf530d8)
+![Upcoming Shows](https://github.com/Satya-Karthik-Palani/ShowsFinder/assets/122262906/a5b64b28-ef03-4a19-835f-cc5e8bc840d1)
+
